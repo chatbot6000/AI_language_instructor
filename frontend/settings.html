@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI settings · EVANGELINE</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Source+Sans+3:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <main class="page-center">
+      <section class="card" style="width: min(520px, 100%)">
+        <p style="margin: 0 0 0.25rem; font-family: var(--font-display); color: var(--teal-deep); letter-spacing: 0.06em;">
+          EVANGELINE
+        </p>
+        <h1>AI configuration</h1>
+        <p class="lede">
+          Signed in as <strong id="whoami">…</strong>. Point at local Ollama or any
+          OpenAI-compatible cloud endpoint. API keys are stored <em>only</em> on the server.
+        </p>
+        <form id="config-form">
+          <div class="field">
+            <label for="base_url">Base URL</label>
+            <input id="base_url" required placeholder="http://127.0.0.1:11434/v1" />
+            <span class="hint">Include the <code>/v1</code> suffix for Ollama’s OpenAI-compatible API.</span>
+          </div>
+          <div class="field">
+            <label for="model">Model</label>
+            <input id="model" required placeholder="llama3.2" />
+          </div>
+          <div class="field">
+            <label for="api_key">API key (optional)</label>
+            <input id="api_key" type="password" autocomplete="off" placeholder="Leave blank for Ollama" />
+            <span id="key-hint" class="hint"></span>
+          </div>
+          <div class="field">
+            <label>
+              <input id="clear_key" type="checkbox" />
+              Clear stored API key
+            </label>
+          </div>
+          <div class="field">
+            <label for="temperature">Temperature</label>
+            <input id="temperature" type="number" min="0" max="2" step="0.1" value="0.7" />
+          </div>
+          <p id="status" class="ok" role="status"></p>
+          <div class="btn-row">
+            <button class="btn btn-primary" type="submit">Save</button>
+            <button id="back-btn" class="btn btn-ghost" type="button">Back to tutor</button>
+            <button id="logout-btn" class="btn btn-ghost" type="button">Log out</button>
+          </div>
+        </form>
+        <p style="margin-top: 1rem; font-size: 0.85rem; color: var(--muted)">
+          Examples: Ollama <code>http://127.0.0.1:11434/v1</code> · OpenRouter
+          <code>https://openrouter.ai/api/v1</code>
+        </p>
+      </section>
+    </main>
+    <script type="module" src="/js/settings.js"></script>
+  </body>
+</html>
